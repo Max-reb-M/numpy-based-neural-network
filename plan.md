@@ -31,6 +31,12 @@
 
     buildGradient(neuronsMap, weights, inputArr, expectedOutput):
         countActivations(inputArr, neuronsMap, gradientsMatrix)
+    
+
+        for dataItem in dataSet:
+            allGradients.append(buildGradient(matrixMap, weights, dataItem['input'], dataItem['output']))
+            #print('32 allGradients:   ', buildGradient(matrixMap, weights, dataItem['input'], dataItem['output'], dataSet, 100000))
+        weightsGradient = getMeanGradient(allGradients)
 ```
 
 
