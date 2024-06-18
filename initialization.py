@@ -95,7 +95,7 @@ def buildGradient(neuronsMap, weights, inputArr, expectedOutputArr):
     
 
 
-#print('Cost Abs:   ', costFunction(activationsMatrixSample, [1]))
+#print('Cost ABS:   ', costFunction(activationsMatrixSample, [1]))
 #print('Cost der:   ', costFuncDerivative(1, 0, 1, weightsMatrixSample, activationsMatrixSample, neuronsMapSample, inputSample, outputSample, 1000))
 
 def getMeanGradient(gradientsMatrix):
