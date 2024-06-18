@@ -73,10 +73,7 @@ def sumOverTwoDimMatrix(matrix):
 
 def buildGradient(neuronsMap, weights, inputArr, expectedOutputArr):
     gradientsMatrix = copy.deepcopy(weights) # lazy way to get the same shaped matrix
-    #weightsTempMatrix[layerInd][rightNeuronIndex][leftNeuronIndex] += (1 / accurancyRate)
     activationsTempMatrix = countActivations(inputArr, neuronsMap, gradientsMatrix)
-    #print('Inside the function', costFunction(activationsTempMatrix, expectedOutput) - costFunction(activationsMatrix, expectedOutput))
-    #return ((costFunction(dataSet, neuronsMap, weightsTempMatrix) - costFunction(dataSet, neuronsMap, weights)) * accurancyRate)
     systemOutput = activationsTempMatrix[-1].copy()
     localGradientForCurrentLayer = 0
     for outputInd in range(len(expectedOutputArr)):
