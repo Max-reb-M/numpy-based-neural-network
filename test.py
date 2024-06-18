@@ -87,7 +87,7 @@ def buildGradient(neuronsMap, weights, inputArr, expectedOutputArr):
             print(layerInd, neuronsMap)
             for leftNeuronConnectionInd in range(neuronsMap[layerInd - 1]):
                 gradientsMatrix[layerInd][rightNeuronConnectionInd][leftNeuronConnectionInd] = localGradientForCurrentLayer * activationsTempMatrix[layerInd - 1][leftNeuronConnectionInd]
-        localGradientForCurrentLayer = localGradientForCurrentLayer * sumOverArr(activationsTempMatrix[layerInd - 1]) * ( 1 - sumOverArr(activationsTempMatrix[layerInd - 1])) * sumOverTwoDimMatrix(weights[layerInd])
+        localGradientForCurrentLayer = localGradientForCurrentLayer * sumOverArr(activationsTempMatrix[layerInd - 1]) * sumOverTwoDimMatrix(weights[layerInd])
     return gradientsMatrix
     
 def countGradient(inputArr, neuronsMap, weights):
@@ -107,7 +107,5 @@ def countGradient(inputArr, neuronsMap, weights):
 print(weightsMatrix)
 print(meanCostFunction(dataSet, matrixMap, weightsMatrix))
 print(costFunctionForOne(dataSet[0]['input'], dataSet[0]['output'], matrixMap, weightsMatrix))
-b = 0
 print('110', buildGradient(matrixMap, weightsMatrix, dataSet[0]['input'], dataSet[0]['output']))
-c = 0
 print('112', countGradient(dataSet[0]['input'], matrixMap, weightsMatrix))
