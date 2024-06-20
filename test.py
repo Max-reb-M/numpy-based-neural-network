@@ -75,15 +75,17 @@ def buildGradient(neuronsMap, weights, inputArr, expectedOutputArr):
     gradientsMatrix = copy.deepcopy(weights) # lazy way to get the same shaped matrix
     activationsTempMatrix = countActivations(inputArr, neuronsMap, gradientsMatrix)
     systemOutput = activationsTempMatrix[-1].copy()
+    print('78 ', systemOutput)
     localGradientForCurrentLayer = 0
     for outputInd in range(len(expectedOutputArr)):
             localGradientForCurrentLayer += (-expectedOutputArr[outputInd] * (1 / systemOutput[outputInd]) + (1 - expectedOutputArr[outputInd])/(1 - systemOutput[outputInd])) * (systemOutput[outputInd]) * (1 - systemOutput[outputInd])
     localGradientForCurrentLayer = localGradientForCurrentLayer / len(expectedOutputArr)
+    print('83 ', localGradientForCurrentLayer)
     for layerInd in range(-1, -len(neuronsMap), -1):
         for rightNeuronConnectionInd in range(1, neuronsMap[layerInd]):
-            print(layerInd, neuronsMap)
             for leftNeuronConnectionInd in range(neuronsMap[layerInd - 1]):
                 gradientsMatrix[layerInd][rightNeuronConnectionInd][leftNeuronConnectionInd] = localGradientForCurrentLayer * activationsTempMatrix[layerInd - 1][leftNeuronConnectionInd]
+                print('88 ', activationsTempMatrix[layerInd - 1][leftNeuronConnectionInd])
         localGradientForCurrentLayer = localGradientForCurrentLayer * sumOverArr(activationsTempMatrix[layerInd - 1]) * sumOverTwoDimMatrix(weights[layerInd])
     return gradientsMatrix
     
@@ -102,6 +104,7 @@ def countGradient(inputArr, neuronsMap, weights):
 
 
 print(weightsMatrix)
+print(countActivations(dataSet[0]['input'], matrixMap, weightsMatrix))
 print(meanCostFunction(dataSet, matrixMap, weightsMatrix))
 print(costFunctionForOne(dataSet[0]['input'], dataSet[0]['output'], matrixMap, weightsMatrix))
 print('110', buildGradient(matrixMap, weightsMatrix, dataSet[0]['input'], dataSet[0]['output']))
