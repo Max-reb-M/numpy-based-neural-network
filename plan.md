@@ -31,10 +31,6 @@
 
     buildGradient(neuronsMap, weights, inputArr, expectedOutput):
         countActivations(inputArr, neuronsMap, gradientsMatrix)
-    
-
-New text here!
-
 
     
 ```
