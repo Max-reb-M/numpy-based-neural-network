@@ -33,7 +33,7 @@
         countActivations(inputArr, neuronsMap, gradientsMatrix)
     
 
-
+New text here!
 
 
     
